@@ -1,0 +1,16 @@
+
+	glGenVertexArrays(1, &VAO_item02);
+	glGenBuffers(1, &VBO_item02);
+
+	glBindVertexArray(VAO_item02);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO_item02);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(I02points) + sizeof(I02colors), NULL, GL_STATIC_DRAW);
+	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(I02points), I02points);
+	glBufferSubData(GL_ARRAY_BUFFER, sizeof(I02points), sizeof(I02colors), I02colors);
+
+	glEnableVertexAttribArray(vPosition);
+	glVertexAttribPointer(vPosition, 4, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
+
+	glEnableVertexAttribArray(vColor);
+	glVertexAttribPointer(vColor, 4, GL_FLOAT, GL_FALSE, 0,
+		BUFFER_OFFSET(sizeof(I02points)));
